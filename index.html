@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRU · ICTD</title>
+<!-- صفحة العرض التوضيحي للحزمة (مسارات نسبية) — للمشاريع الجديدة انسخ starter.html -->
+<link rel="stylesheet" href="sru-ui.css">
+<script src="sru-brand.js"></script>
+</head>
+<body>
+
+<!-- ② محتوى المشروع فقط — الهيدر والفوتر يُبنيان تلقائياً -->
+<main><div class="sru-wrap">
+
+  <section class="sru-card">
+    <h2><i data-lucide="info"></i> بيانات أساسية</h2>
+    <p class="sub">مثال توضيحي — استبدله بمحتوى المشروع. أي حقل يحمل <code>data-field</code> يُحفظ ويُصدَّر تلقائياً.</p>
+    <div class="sru-grid">
+      <div><label>اسم المشروع <span class="req">*</span></label><input data-field="name" placeholder="مثال: نظام طلبات الأجهزة"></div>
+      <div><label>الإدارة المالكة</label><input data-field="owner" value="الإدارة التنفيذية للاتصالات وتقنية المعلومات"></div>
+      <div><label>تاريخ البدء</label><input data-field="date" type="date"></div>
+      <div><label>الحالة</label><select data-field="status"><option>مسودة</option><option>قيد المراجعة</option><option>معتمد</option></select></div>
+    </div>
+  </section>
+
+  <section class="sru-card">
+    <h2><i data-lucide="file-text"></i> الوصف</h2>
+    <p class="sub">الغرض والنطاق والمخرجات المتوقعة.</p>
+    <textarea data-field="desc" rows="5" placeholder="اكتب الوصف هنا…"></textarea>
+    <div style="margin-top:14px;display:flex;gap:8px">
+      <button class="sru-btn sru-btn-primary" type="button"><i data-lucide="check"></i> زر أساسي</button>
+      <button class="sru-btn sru-btn-secondary" type="button">زر ثانوي</button>
+    </div>
+  </section>
+
+</div></main>
+
+<!-- ③ إعداد المشروع -->
+<script>
+SRU.init({
+  titleAr : "حزمة هوية ICTD",
+  titleEn : "SRU · ICTD Brand Kit",
+  code    : "SRU-KIT-BRAND-01",
+  version : SRU.KIT_VERSION,
+  sheetsUrl : "",   // رابط Apps Script Web App (اختياري)
+  sample  : { name:"نظام طلبات الأجهزة", status:"قيد المراجعة", desc:"أتمتة طلبات الأجهزة وربطها بسجل الأصول." }
+  // buttons : [...]          // لتخصيص الأزرار
+  // actions : { openLog(){ … } }  // لتجاوز سلوك أي زر
+  // toolbar : false          // لصفحات العرض بلا أزرار
+});
+</script>
+</body>
+</html>

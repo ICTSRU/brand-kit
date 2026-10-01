@@ -1,0 +1,109 @@
+/*!
+ * SRU · ICTD Brand Kit — sru-ui.css
+ * Kit version: 1.0
+ * Source of truth: SRU_IDENTITY.md
+ * Owner: Mohamed ElMahdy, IT Operations Manager, Sulaiman Al Rajhi University
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+/* ========== 1. Tokens ========== */
+:root{
+  --sru-purple:#501e8c; --sru-purple-dark:#3a1464; --sru-purple-light:#f0ebf8;
+  --sru-blue:#0a6eaa;   --sru-blue-light:#e6f3fa;
+  --sru-bg:#f7f5fb; --sru-ink:#241436; --sru-muted:#6b5a80;
+  --sru-border:rgba(80,30,140,.12); --sru-radius:4px;
+  --sru-ok:#1f8a5b; --sru-warn:#b7791f; --sru-err:#c0392b;
+  --sru-maxw:1440px;
+}
+
+/* ========== 2. Base ========== */
+*{box-sizing:border-box}
+html,body{margin:0}
+body.sru{font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--sru-bg);color:var(--sru-ink);
+  font-size:15px;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+body.sru > main{flex:1}
+.sru-en{direction:ltr;unicode-bidi:isolate}
+.sru-wrap{max-width:var(--sru-maxw);margin:0 auto;padding:0 24px;width:100%}
+
+/* ========== 3. Header: logo band ========== */
+.sru-brand{background:#fff}
+.sru-brand .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px;padding-top:6px;padding-bottom:6px}
+.sru-brand img{display:block;max-width:46vw;height:auto}
+.sru-brand .sru-logo-uni{height:62px;width:auto}
+.sru-brand .sru-logo-ictd{height:70px;width:auto}
+
+/* ========== 4. Header: title bar ========== */
+.sru-title{background:var(--sru-purple-dark);color:#fff}
+.sru-title .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:48px;padding-top:8px;padding-bottom:8px}
+.sru-title h1{margin:0;font-size:20px;font-weight:800;line-height:1.4;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sru-title h1 .sru-en{font-size:15px;font-weight:500;opacity:.88}
+.sru-chip-ver{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.08);border-radius:999px;padding:3px 12px;font-size:12.5px;white-space:nowrap}
+.sru-chip-ver b{font-weight:800}
+
+/* ========== 5. Diagonal dashed accent ========== */
+.sru-diag{height:5px;background:var(--sru-purple);overflow:hidden}
+.sru-diag::before{content:"";display:block;height:100%;width:calc(100% + 40px);margin-inline-start:-20px;
+  background:repeating-linear-gradient(90deg,var(--sru-blue) 0 22px,transparent 22px 42px);transform:skewX(-35deg)}
+
+/* ========== 6. Toolbar ========== */
+.sru-toolbar{background:var(--sru-purple);color:#fff}
+.sru-toolbar .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+.sru-tb-actions{display:flex;gap:8px;flex-wrap:wrap}
+.sru-tb-status{display:flex;align-items:center;gap:10px;font-size:13px;opacity:.95}
+.sru-tbtn{font:inherit;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px;
+  height:38px;padding:0 14px;border-radius:var(--sru-radius);cursor:pointer;
+  background:#fff;color:var(--sru-purple);border:1px solid #fff;transition:.15s}
+.sru-tbtn:hover{background:var(--sru-purple-light)}
+.sru-tbtn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.sru-tbtn.ghost:hover{background:rgba(255,255,255,.12)}
+.sru-tbtn.icon{width:32px;height:32px;padding:0;justify-content:center}
+.sru-tbtn svg{width:17px;height:17px;flex:none}
+
+/* ========== 7. Content components ========== */
+.sru-main{padding:28px 0 40px}
+.sru-card{background:#fff;border:1px solid var(--sru-border);border-radius:var(--sru-radius);padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(58,20,100,.05)}
+.sru-card h2{margin:0 0 4px;font-size:17px;color:var(--sru-purple);font-weight:800;display:flex;align-items:center;gap:8px}
+.sru-card h2 svg{width:19px;height:19px;color:var(--sru-blue)}
+.sru-card .sub{margin:0 0 16px;color:var(--sru-muted);font-size:13.5px}
+.sru-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 18px}
+body.sru label{display:block;font-weight:700;font-size:13.5px;margin-bottom:5px}
+body.sru label .req{color:var(--sru-err)}
+body.sru input,body.sru select,body.sru textarea{font:inherit;width:100%;border:1px solid rgba(80,30,140,.25);border-radius:var(--sru-radius);padding:8px 11px;background:#fff;color:var(--sru-ink)}
+body.sru input:focus,body.sru select:focus,body.sru textarea:focus{outline:2px solid var(--sru-blue-light);border-color:var(--sru-blue)}
+.sru-btn{font:inherit;font-weight:700;border-radius:var(--sru-radius);padding:8px 18px;cursor:pointer;border:1px solid var(--sru-purple);display:inline-flex;align-items:center;gap:7px}
+.sru-btn-primary{background:var(--sru-purple);color:#fff}
+.sru-btn-secondary{background:#fff;color:var(--sru-purple)}
+.sru-chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--sru-purple-light);color:var(--sru-purple)}
+
+/* ========== 8. Footer ========== */
+.sru-footer{background:#fff;border-top:1px solid var(--sru-border)}
+.sru-footer .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:58px;padding-top:8px;padding-bottom:8px}
+.sru-footer .sru-ft-text{font-size:13px;color:var(--sru-muted)}
+.sru-footer .sru-ft-text b{color:var(--sru-ink);font-weight:800}
+.sru-footer a.sru-itoc{display:inline-flex;align-items:center}
+.sru-footer a.sru-itoc img{height:40px;width:auto;display:block}
+
+/* ========== 9. Toast ========== */
+.sru-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;
+  background:var(--sru-purple-dark);color:#fff;padding:10px 18px;border-radius:var(--sru-radius);font-size:14px;transition:.25s;z-index:999;pointer-events:none}
+.sru-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ========== 10. Responsive ========== */
+@media (max-width:720px){
+  .sru-wrap{padding:0 16px}
+  .sru-brand .sru-logo-uni{height:42px}.sru-brand .sru-logo-ictd{height:48px}
+  .sru-title h1{font-size:17px}.sru-title h1 .sru-en{font-size:13px}
+  .sru-tbtn{height:34px;padding:0 10px;font-size:12.5px}
+}
+
+/* ========== 11. Print / PDF (A4) ========== */
+@page{size:A4;margin:14mm 12mm}
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.sru{background:#fff;font-size:12.5px}
+  .no-print,.sru-toolbar,.sru-toast{display:none!important}
+  .sru-wrap{max-width:none;padding:0}
+  .sru-card{box-shadow:none;break-inside:avoid}
+  .sru-main{padding:12px 0}
+}
