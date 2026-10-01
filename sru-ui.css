@@ -1,6 +1,6 @@
 /*!
  * SRU · ICTD Brand Kit — sru-ui.css
- * Kit version: 1.0
+ * Kit version: 1.1
  * Source of truth: SRU_IDENTITY.md
  * Owner: Mohamed ElMahdy, IT Operations Manager, Sulaiman Al Rajhi University
  */
@@ -19,15 +19,18 @@
 /* ========== 2. Base ========== */
 *{box-sizing:border-box}
 html,body{margin:0}
-body.sru{font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--sru-bg);color:var(--sru-ink);
-  font-size:15px;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
-body.sru > main{flex:1}
+/* v1.1: :where() = zero specificity, so a page's own body styles win */
+:where(body.sru){font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--sru-bg);color:var(--sru-ink);
+  font-size:15px;line-height:1.7;min-height:100vh}
+/* v1.1: sticky footer without flex — leaves existing app layouts untouched */
+body.sru > .sru-footer{position:sticky;top:100vh}
+.sru-ar{direction:rtl;unicode-bidi:isolate}
 .sru-en{direction:ltr;unicode-bidi:isolate}
 .sru-wrap{max-width:var(--sru-maxw);margin:0 auto;padding:0 24px;width:100%}
 
 /* ========== 3. Header: logo band ========== */
 .sru-brand{background:#fff}
-.sru-brand .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px;padding-top:6px;padding-bottom:6px}
+.sru-brand .sru-wrap{direction:rtl;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px;padding-top:6px;padding-bottom:6px}
 .sru-brand img{display:block;max-width:46vw;height:auto}
 .sru-brand .sru-logo-uni{height:62px;width:auto}
 .sru-brand .sru-logo-ictd{height:70px;width:auto}
@@ -51,12 +54,14 @@ body.sru > main{flex:1}
 .sru-toolbar .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
 .sru-tb-actions{display:flex;gap:8px;flex-wrap:wrap}
 .sru-tb-status{display:flex;align-items:center;gap:10px;font-size:13px;opacity:.95}
+.sru-tb-status svg{width:16px;height:16px}
 .sru-tbtn{font:inherit;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:7px;
   height:38px;padding:0 14px;border-radius:var(--sru-radius);cursor:pointer;
   background:#fff;color:var(--sru-purple);border:1px solid #fff;transition:.15s}
 .sru-tbtn:hover{background:var(--sru-purple-light)}
 .sru-tbtn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
 .sru-tbtn.ghost:hover{background:rgba(255,255,255,.12)}
+.sru-tbtn.ghost.active{background:#fff;color:var(--sru-purple);border-color:#fff}
 .sru-tbtn.icon{width:32px;height:32px;padding:0;justify-content:center}
 .sru-tbtn svg{width:17px;height:17px;flex:none}
 
@@ -67,10 +72,10 @@ body.sru > main{flex:1}
 .sru-card h2 svg{width:19px;height:19px;color:var(--sru-blue)}
 .sru-card .sub{margin:0 0 16px;color:var(--sru-muted);font-size:13.5px}
 .sru-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 18px}
-body.sru label{display:block;font-weight:700;font-size:13.5px;margin-bottom:5px}
-body.sru label .req{color:var(--sru-err)}
-body.sru input,body.sru select,body.sru textarea{font:inherit;width:100%;border:1px solid rgba(80,30,140,.25);border-radius:var(--sru-radius);padding:8px 11px;background:#fff;color:var(--sru-ink)}
-body.sru input:focus,body.sru select:focus,body.sru textarea:focus{outline:2px solid var(--sru-blue-light);border-color:var(--sru-blue)}
+.sru-card label{display:block;font-weight:700;font-size:13.5px;margin-bottom:5px}
+.sru-card label .req{color:var(--sru-err)}
+.sru-card input,.sru-card select,.sru-card textarea{font:inherit;width:100%;border:1px solid rgba(80,30,140,.25);border-radius:var(--sru-radius);padding:8px 11px;background:#fff;color:var(--sru-ink)}
+.sru-card input:focus,.sru-card select:focus,.sru-card textarea:focus{outline:2px solid var(--sru-blue-light);border-color:var(--sru-blue)}
 .sru-btn{font:inherit;font-weight:700;border-radius:var(--sru-radius);padding:8px 18px;cursor:pointer;border:1px solid var(--sru-purple);display:inline-flex;align-items:center;gap:7px}
 .sru-btn-primary{background:var(--sru-purple);color:#fff}
 .sru-btn-secondary{background:#fff;color:var(--sru-purple)}
@@ -78,8 +83,9 @@ body.sru input:focus,body.sru select:focus,body.sru textarea:focus{outline:2px s
 
 /* ========== 8. Footer ========== */
 .sru-footer{background:#fff;border-top:1px solid var(--sru-border)}
-.sru-footer .sru-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:58px;padding-top:8px;padding-bottom:8px}
+.sru-footer .sru-wrap{direction:rtl;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:58px;padding-top:8px;padding-bottom:8px}
 .sru-footer .sru-ft-text{font-size:13px;color:var(--sru-muted)}
+[dir=ltr] .sru-footer .sru-ft-text{direction:ltr}
 .sru-footer .sru-ft-text b{color:var(--sru-ink);font-weight:800}
 .sru-footer a.sru-itoc{display:inline-flex;align-items:center}
 .sru-footer a.sru-itoc img{height:40px;width:auto;display:block}
@@ -106,4 +112,5 @@ body.sru input:focus,body.sru select:focus,body.sru textarea:focus{outline:2px s
   .sru-wrap{max-width:none;padding:0}
   .sru-card{box-shadow:none;break-inside:avoid}
   .sru-main{padding:12px 0}
+  body.sru-print-bare .sru-header,body.sru-print-bare .sru-footer{display:none!important}
 }

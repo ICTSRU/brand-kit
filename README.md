@@ -1,4 +1,4 @@
-# SRU · ICTD Brand Kit — v1.0
+# SRU · ICTD Brand Kit — v1.1
 **حزمة الهوية الموحّدة لمشاريع الإدارة التنفيذية للاتصالات وتقنية المعلومات**
 
 Sulaiman Al Rajhi University · Executive Directorate of Communications & Information Technology
@@ -56,14 +56,25 @@ SRU.init({
 | `autosave` | `true` | حفظ المسودة محلياً تلقائياً |
 | `logos` | `assets/logos/*` | لتجاوز أي شعار |
 | `onSettings` | — | دالة زر الإعدادات |
+| `lang` *(1.1)* | `"ar"` | `"en"` للتطبيقات الإنجليزية (LTR) — الشعارات وITOC تبقى في مواضعها |
+| `buttonsMode` *(1.1)* | `"actions"` | `"tabs"` لتبويبات بزر نشط واحد؛ حدّد `active:true` للتبويب الافتراضي |
+| `statusText` / `statusIcon` *(1.1)* | — | نص وأيقونة ثابتان في منطقة الحالة (مثل تاريخ اليوم) |
+| `settings` *(1.1)* | `true` | `false` لإخفاء زر الإعدادات |
+| `printChrome` *(1.1)* | `true` | `false` لإخفاء الهيدر والفوتر عند الطباعة (للتقارير ذات الغلاف الخاص) |
 
 ### الأزرار القياسية | Built-in actions
 `saveSheets` · `openLog` · `print` · `reset` · `loadSample` · `exportJson` · `importJson`
 
 ### واجهة برمجية | API
-`SRU.toast(msg)` · `SRU.status(msg)` · `SRU.collect()` · `SRU.fill(obj)` · `SRU.clear()` · `SRU.run(action)` · `SRU.icons()` · `SRU.KIT_VERSION`
+`SRU.toast(msg)` · `SRU.status(msg)` · `SRU.collect()` · `SRU.fill(obj)` · `SRU.clear()` · `SRU.run(action)` · `SRU.setActive(action)` *(1.1)* · `SRU.icons()` · `SRU.KIT_VERSION`
 
 ---
+
+## ترحيل تطبيق قائم | Migrating an existing app
+1. احذف HTML وCSS الهيدر والفوتر وشريط التنقل والشعارات المضمّنة.
+2. أضف سطري الحزمة في `<head>`.
+3. استدعِ `SRU.init()` واربط الأزرار/التبويبات بدوال التطبيق الحالية عبر `actions`.
+4. أنماط الحزمة لا تتعارض مع أنماط التطبيق: أنماط `body` الأساسية بأولوية صفرية، وأنماط الحقول محصورة داخل `.sru-card`.
 
 ## المكوّنات الجاهزة | CSS components
 `.sru-wrap` · `.sru-card` (+ `h2`, `.sub`) · `.sru-grid` · `.sru-btn .sru-btn-primary` · `.sru-btn .sru-btn-secondary` · `.sru-chip` · `.sru-en` (عزل النص الإنجليزي) · `.no-print`
@@ -74,7 +85,7 @@ SRU.init({
 
 ## هيكل المستودع | Repository structure
 ```
-sru-brand-kit-v1.0/
+sru-brand-kit-v1.1/
 ├── index.html          صفحة عرض توضيحي (مسارات نسبية)
 ├── starter.html        قالب البدء لأي مشروع جديد
 ├── sru-ui.css          الرموز اللونية والمكوّنات وقواعد الطباعة
